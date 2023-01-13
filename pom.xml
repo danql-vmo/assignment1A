@@ -91,7 +91,11 @@
             <artifactId>allure-testng</artifactId>
             <version>2.20.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.martincooper</groupId>
+            <artifactId>java-datatable</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
