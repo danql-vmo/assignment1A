@@ -19,7 +19,7 @@ public class Assignment1A_Test {
 
     @Test
     public void assignment1A() throws Exception {
-        assignment1A = new danql.projects.assignments.Assignment1A(driver);
+        assignment1A = new Assignment1A(driver);
         driver.get("https://www.bursamalaysia.com/");
         assignment1A.getDailyTopTenByVolumeAndSortByChange();
         Thread.sleep(2000);

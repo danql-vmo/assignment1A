@@ -14,11 +14,11 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class BaseLocator {
-    private static HashMap<String, String> locator = new HashMap<String, String>();
+    private static HashMap<String, String> locator;// = new HashMap<String, String>();
     public static HashMap<String, String> getLocators()
     {
         //Insert XPaths here
-        locator.put("key", "value");
+//        locator.put("key", "value");
         return locator;
     }
 }

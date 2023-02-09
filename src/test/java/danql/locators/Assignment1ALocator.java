@@ -2,7 +2,7 @@ package danql.locators;
 
 import java.util.HashMap;
 
-public class Assignment1ALocator {
+public class Assignment1ALocator extends BaseLocator {
     private static HashMap<String, String> locator = new HashMap<String, String>();
 
     public static HashMap<String, String> getLocators() {
