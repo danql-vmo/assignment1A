@@ -11,20 +11,20 @@ public class Task {
     }
 
     private int id;
-    private String projectId;
-    private int sectionId;
-    private String content;
     private String description;
-    private boolean completed;
+    private String project_id;
+    private String section_id;
+    private String content;
+    private boolean is_completed;
     private int[] labelIds;
-    private int parentId;
+    private String parent_id;
     private int order;
     private int priority;
     private Due due;
     private String url;
-    private int commentCount;
-    private int assignee;
-    private int assigner;
+    private int comment_count;
+    private String assignee_id;
+    private String assigner_id;
 
     public int getId() {
         return id;
@@ -34,20 +34,20 @@ public class Task {
         this.id = id;
     }
 
-    public String getProjectId() {
-        return projectId;
+    public String getProject_id() {
+        return project_id;
     }
 
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public void setProject_id(String project_id) {
+        this.project_id = project_id;
     }
 
-    public int getSectionId() {
-        return sectionId;
+    public String getSection_id() {
+        return section_id;
     }
 
-    public void setSectionId(int sectionId) {
-        this.sectionId = sectionId;
+    public void setSection_id(String section_id) {
+        this.section_id = section_id;
     }
 
     public String getContent() {
@@ -66,12 +66,12 @@ public class Task {
         this.description = description;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public boolean isIs_completed() {
+        return is_completed;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setIs_completed(boolean is_completed) {
+        this.is_completed = is_completed;
     }
 
     public int[] getLabelIds() {
@@ -82,12 +82,12 @@ public class Task {
         this.labelIds = labelIds;
     }
 
-    public int getParentId() {
-        return parentId;
+    public String getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
     }
 
     public int getOrder() {
@@ -122,28 +122,28 @@ public class Task {
         this.url = url;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public int getComment_count() {
+        return comment_count;
     }
 
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
+    public void setComment_count(int comment_count) {
+        this.comment_count = comment_count;
     }
 
-    public int getAssignee() {
-        return assignee;
+    public String getAssignee_id() {
+        return assignee_id;
     }
 
-    public void setAssignee(int assignee) {
-        this.assignee = assignee;
+    public void setAssignee_id(String assignee_id) {
+        this.assignee_id = assignee_id;
     }
 
-    public int getAssigner() {
-        return assigner;
+    public String getAssigner_id() {
+        return assigner_id;
     }
 
-    public void setAssigner(int assigner) {
-        this.assigner = assigner;
+    public void setAssigner_id(String assigner_id) {
+        this.assigner_id = assigner_id;
     }
 
 }

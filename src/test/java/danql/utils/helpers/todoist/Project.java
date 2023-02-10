@@ -49,31 +49,31 @@ public class Project {
     private Integer id;
     private String name;
     private ProjectColor color;
-    private String parentID;
+    private String parent_id;
     private Integer order;
-    private Integer commentCount;
-    private Boolean isShared;
+    private Integer comment_count;
+    private Boolean is_shared;
 
     public Boolean getFavorite() {
-        return isFavorite;
+        return is_favorite;
     }
 
     public void setFavorite(Boolean favorite) {
-        isFavorite = favorite;
+        is_favorite = favorite;
     }
 
-    public String getViewStyle() {
-        return viewStyle;
+    public String getView_style() {
+        return view_style;
     }
 
-    public void setViewStyle(String viewStyle) {
-        this.viewStyle = viewStyle;
+    public void setView_style(String view_style) {
+        this.view_style = view_style;
     }
 
-    private Boolean isFavorite;
-    private Boolean isInboxProject;
-    private Boolean isTeamInbox;
-    private String viewStyle;
+    private Boolean is_favorite;
+    private Boolean is_inbox_project;
+    private Boolean is_team_inbox;
+    private String view_style;
     private String url;
 
     public Integer getId() {
@@ -100,12 +100,12 @@ public class Project {
         this.color = color;
     }
 
-    public String getParentID() {
-        return parentID;
+    public String getParent_id() {
+        return parent_id;
     }
 
-    public void setParentID(String parentID) {
-        this.parentID = parentID;
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
     }
 
     public Integer getOrder() {
@@ -116,36 +116,36 @@ public class Project {
         this.order = order;
     }
 
-    public Integer getCommentCount() {
-        return commentCount;
+    public Integer getComment_count() {
+        return comment_count;
     }
 
-    public void setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
+    public void setComment_count(Integer comment_count) {
+        this.comment_count = comment_count;
     }
 
-    public Boolean getIsShared() {
-        return isShared;
+    public Boolean getIs_shared() {
+        return is_shared;
     }
 
-    public void setIsShared(Boolean isShared) {
-        this.isShared = isShared;
+    public void setIs_shared(Boolean is_shared) {
+        this.is_shared = is_shared;
     }
 
-    public Boolean getIsInboxProject() {
-        return isInboxProject;
+    public Boolean getIs_inbox_project() {
+        return is_inbox_project;
     }
 
-    public void setIsInboxProject(Boolean isInboxProject) {
-        this.isInboxProject = isInboxProject;
+    public void setIs_inbox_project(Boolean is_inbox_project) {
+        this.is_inbox_project = is_inbox_project;
     }
 
-    public Boolean getIsTeamInbox() {
-        return isTeamInbox;
+    public Boolean getIs_team_inbox() {
+        return is_team_inbox;
     }
 
-    public void setIsTeamInbox(Boolean isTeamInbox) {
-        this.isTeamInbox = isTeamInbox;
+    public void setIs_team_inbox(Boolean is_team_inbox) {
+        this.is_team_inbox = is_team_inbox;
     }
 
     public String getUrl() {

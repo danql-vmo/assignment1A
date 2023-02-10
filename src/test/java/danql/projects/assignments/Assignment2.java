@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -21,6 +22,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import static io.restassured.RestAssured.*;
+
 public class Assignment2 {
     private WebDriver driver;
     private WebUI webUI;
@@ -43,7 +45,7 @@ public class Assignment2 {
         String requestUrl = baseApiUrl + "/projects";
         Project proj = new Project();
         proj.setName(projectName);
-        if (projectParentID != null) proj.setParentID(projectParentID);
+        if (projectParentID != null) proj.setParent_id(projectParentID);
         if (projectColor != null) proj.setColor(projectColor);
         if (isFavorite != null) proj.setFavorite(isFavorite);
         Response resp = given()
@@ -146,32 +148,37 @@ public class Assignment2 {
         proj.setColor(ProjectColor.fromInt(colorId));
         Response resp =
                 given()
-                    .headers(
-                            "Authorization",
-                            "Bearer " + apiToken)
-                    .contentType(ContentType.JSON)
-                .when()
-                    .body(proj)
-                    .post(requestUrl);
-        Log.info(resp.asPrettyString());
+                        .headers(
+                                "Authorization",
+                                "Bearer " + apiToken)
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .body(proj)
+                        .post(requestUrl);
+//        Log.info(resp.asPrettyString());
         JsonPath jsonPathEvaluator = resp.jsonPath();
         String createdProjectId = jsonPathEvaluator.get("id");
         Log.info(createdProjectId);
         requestUrl = baseApiUrl + "/tasks";
         Task task = new Task();
         task.setContent("New task created at " + formatter.format(date));
-        task.setProjectId(createdProjectId);
+        task.setProject_id(createdProjectId);
+        task.setParent_id(null);
+//        task.setSection_id(createdProjectId);
         task.setPriority(4);
         resp =
                 given()
-                    .headers(
-                            "Authorization",
-                            "Bearer " + apiToken)
-                    .contentType(ContentType.JSON)
-                .when()
-                    .body(task)
-                    .post(requestUrl);
-        Log.info(resp.asPrettyString());
+                        .headers(
+                                "Authorization",
+                                "Bearer " + apiToken)
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .body(task)
+                        .post(requestUrl);
+//        Log.info(resp.asPrettyString());
+        jsonPathEvaluator = resp.jsonPath();
+        String createdTaskId = jsonPathEvaluator.get("id");
+        Log.info(createdTaskId);
         driver.findElement(homepageLoginButton).click();
         WebDriverWait wait = new WebDriverWait(driver, 30);
         WebElement username = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameTextbox));
@@ -181,8 +188,13 @@ public class Assignment2 {
         password.click();
         password.sendKeys("thisisapassword");
         driver.findElement(loginButton).click();
-        driver.findElement(By.xpath("//a[@href='/app/project/"+ createdProjectId +"']")).click();
-
+        driver.findElement(By.xpath("//a[@href='/app/project/" + createdProjectId + "']")).click();
+        Assert.assertFalse(driver.findElements(By.xpath("//div[contains(@id,'" + createdTaskId + "')]")).isEmpty());
+        driver.findElement(By.xpath("//button[contains(@aria-describedby,'" + createdTaskId + "')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='1 task completed']")));
+        Assert.assertTrue(driver.findElements(By.xpath("//div[contains(@id,'" + createdTaskId + "')]")).isEmpty());
+        reopenTask(createdTaskId);
+        Assert.assertFalse(driver.findElements(By.xpath("//div[contains(@id,'" + createdTaskId + "')]")).isEmpty());
     }
 
 }
